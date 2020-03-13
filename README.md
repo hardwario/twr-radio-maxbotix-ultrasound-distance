@@ -7,7 +7,17 @@
 [![License](https://img.shields.io/github/license/bigclownprojects/bcf-lcd-maxbotix-ultrasound-distance.svg)](https://github.com/bigclownprojects/bcf-lcd-maxbotix-ultrasound-distance/blob/master/LICENSE)
 [![Twitter](https://img.shields.io/twitter/follow/hardwario_en.svg?style=social&label=Follow)](https://twitter.com/hardwario_en)
 
-This repository contains firmware skeleton for [Core Module](https://shop.bigclown.com/core-module).
+```
+Maxbotix connection
+
+Sensor Module pin       Maxbotix pin
+-------------------------------------
+A (pulse in)            2 (pulse out)
+GND                     GND
+VCC                     V+
+```
+
+This repository contains firmware for [Core Module](https://shop.bigclown.com/core-module).
 
 If you want to get more information about Core Module, firmware and how to work with it, please follow this link:
 

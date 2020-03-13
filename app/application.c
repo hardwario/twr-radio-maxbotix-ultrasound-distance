@@ -1,5 +1,18 @@
 #include <application.h>
 
+/*
+
+Maxbotix connection
+
+Sensor Module pin       Maxbotix pin
+-------------------------------------
+A (pulse in)            2 (pulse out)
+GND                     GND
+VCC                     V+
+
+*/
+
+
 // LED instance
 bc_led_t led;
 
