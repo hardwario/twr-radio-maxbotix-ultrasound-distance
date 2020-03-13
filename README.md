@@ -1,21 +1,19 @@
-<a href="https://www.bigclown.com/"><img src="https://bigclown.sirv.com/logo.png" width="200" alt="BigClown Logo" align="right"></a>
+<a href="https://www.hardwario.com/"><img src="https://www.hardwario.com/ci/assets/hw-logo.svg" width="200" alt="HARDWARIO Logo" align="right"></a>
 
-# Firmware Skeleton for BigClown Core Module
+# Firmware for MaxBotix MB7066-100 ultrasound distance sensor
 
-[![Travis](https://img.shields.io/travis/bigclownlabs/bcf-skeleton/master.svg)](https://travis-ci.org/bigclownlabs/bcf-skeleton)
-[![Release](https://img.shields.io/github/release/bigclownlabs/bcf-skeleton.svg)](https://github.com/bigclownlabs/bcf-skeleton/releases)
-[![License](https://img.shields.io/github/license/bigclownlabs/bcf-skeleton.svg)](https://github.com/bigclownlabs/bcf-skeleton/blob/master/LICENSE)
-[![Twitter](https://img.shields.io/twitter/follow/BigClownLabs.svg?style=social&label=Follow)](https://twitter.com/BigClownLabs)
+[![Travis](https://img.shields.io/travis/bigclownprojects/bcf-lcd-maxbotix-ultrasound-distance/master.svg)](https://travis-ci.org/bigclownprojects/bcf-lcd-maxbotix-ultrasound-distance)
+[![Release](https://img.shields.io/github/release/bigclownprojects/bcf-lcd-maxbotix-ultrasound-distance.svg)](https://github.com/bigclownprojects/bcf-lcd-maxbotix-ultrasound-distance/releases)
+[![License](https://img.shields.io/github/license/bigclownprojects/bcf-lcd-maxbotix-ultrasound-distance.svg)](https://github.com/bigclownprojects/bcf-lcd-maxbotix-ultrasound-distance/blob/master/LICENSE)
+[![Twitter](https://img.shields.io/twitter/follow/hardwario_en.svg?style=social&label=Follow)](https://twitter.com/hardwario_en)
 
 This repository contains firmware skeleton for [Core Module](https://shop.bigclown.com/core-module).
 
 If you want to get more information about Core Module, firmware and how to work with it, please follow this link:
 
-**https://www.bigclown.com/doc/firmware/basic-overview/**
+**https://developers.hardwario.com/firmware/basic-overview/**
 
 User's application code (business logic) goes into `app/application.c`.
-The default content works as a *Hello World* example.
-When flashed into Core Module, it toggles LED state with each button press.
 
 ## License
 
