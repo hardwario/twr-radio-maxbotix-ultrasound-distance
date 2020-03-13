@@ -16,45 +16,23 @@ bool sleep = false;
 BC_DATA_STREAM_FLOAT_BUFFER(distance_stream_buffer, (GRAPH_WIDTH_TIME / DISTANCE_MEASURE_PERIOD))
 bc_data_stream_t distance_stream;
 
-
-void set_sleep()
-{
-    if (sleep)
-    {
-        bc_timer_start();
-        bc_timer_delay(5000);
-        bc_timer_stop();
-
-        bc_gfx_clear(gfx);
-        bc_gfx_set_font(gfx, &bc_font_ubuntu_33);
-        bc_gfx_printf(gfx, 5, 10, true, "Sleep");
-        bc_gfx_update(gfx);
-
-        bc_timer_start();
-        bc_timer_delay(5000);
-        bc_timer_stop();
-
-        bc_module_sensor_set_vdd(false);
-
-        bc_scheduler_plan_absolute(0, BC_TICK_INFINITY);
-    }
-    else
-    {
-        bc_module_sensor_set_vdd(true);
-
-        bc_scheduler_plan_now(0);
-    }
-
-}
-
 void button_event_handler(bc_button_t *self, bc_button_event_t event, void *event_param)
 {
     if (event == BC_BUTTON_EVENT_PRESS)
     {
         bc_led_pulse(&led, 100);
+
         sleep = !sleep;
 
-        set_sleep();
+        if (sleep)
+        {
+            bc_module_sensor_set_vdd(false);
+        }
+        else
+        {
+            bc_module_sensor_set_vdd(true);
+            bc_scheduler_plan_now(0);
+        }
     }
 }
 
@@ -207,6 +185,21 @@ void graph(bc_gfx_t *gfx, int x0, int y0, int x1, int y1, bc_data_stream_t *data
 
 void application_task(void)
 {
+    if (!bc_gfx_display_is_ready(gfx))
+    {
+            bc_scheduler_plan_current_from_now(50);
+    }
+
+    if (sleep)
+    {
+        bc_gfx_clear(gfx);
+        bc_gfx_set_font(gfx, &bc_font_ubuntu_33);
+        bc_gfx_printf(gfx, 5, 10, true, "Sleep");
+        bc_gfx_update(gfx);
+
+        return;
+    }
+
     bc_system_pll_enable();
 
     // Wait while signal is low
@@ -236,12 +229,10 @@ void application_task(void)
     bc_data_stream_feed(&distance_stream, &centimeters);
     graph(gfx, 0, 40, 127, 127, &distance_stream, DISTANCE_MEASURE_PERIOD, "%.1f");
 
-
     bc_gfx_update(gfx);
 
     bc_log_debug("%d cm", centimeters);
 
     bc_system_pll_disable();
-
     bc_scheduler_plan_current_from_now(DISTANCE_MEASURE_PERIOD);
 }
